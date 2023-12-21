@@ -27,14 +27,14 @@ const images = [
 
 const galleryList = document.querySelector(".gallery");
 
-const imageEl = images.forEach((image) => {
-  galleryList.insertAdjacentHTML(
-    "afterbegin",
-    `<li><img src = ${image.url} alt = ${image.alt} width = "360" height = "300"></li>`
-  );
-});
+const imageEl = images
+  .map((image) => {
+    return `<li class="image-item"><img src = "${image.url}" alt = "${image.alt}" width = "360" height = "300"></li>`;
+  })
+  .join("");
 
-galleryList.style.objectFit = "cover";
+galleryList.innerHTML = imageEl;
+
 galleryList.style.display = "flex";
 galleryList.style.gap = "24px";
 galleryList.style.listStyle = "none";
